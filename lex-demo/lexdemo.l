@@ -38,11 +38,13 @@ INTEIRO  {DIGITO}+
                                                            deu match na
                                                            expressao regular */
 
+.+	{printf("[lixo]\n");}
+\n+	{printf("[pula]\n");}
+
 [[:space:]]+ ;
 [[:^space:]]+ ;
 
 [.\n]* ;
-
 
 %%
 
