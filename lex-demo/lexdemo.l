@@ -37,14 +37,17 @@ INTEIRO  {DIGITO}+
 [a-zA-Z]+ { printf("Encontrei a palavra %s\n", yytext); } /* yytext e o texto que
                                                            deu match na
                                                            expressao regular */
+{INTEIRO}+\.{INTEIRO}+ {printf("Ponto flutuante: [%s]\n", yytext);}
 
-.+	{printf("[lixo]\n");}
-\n+	{printf("[pula]\n");}
+[.]* {printf("whatever with []: [%s]\n", yytext);}
+.* {printf("whatever: [%s]\n", yytext);}
 
-[[:space:]]+ ;
-[[:^space:]]+ ;
+
+[[:space:]]+; /*{printf("error with space: [%s]\n", yytext);}*/
+[[:^space:]]+; /*{printf("error without space: [%s]\n", yytext);} */
 
 [.\n]* ;
+
 
 %%
 
