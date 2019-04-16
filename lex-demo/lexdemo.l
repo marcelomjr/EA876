@@ -16,6 +16,8 @@
 #include <stdio.h>
 #include <string.h>
 
+float soma = 0;
+
 /* Criteiros de desempate:
    1 - Maior match
    2 - Regra que vem antes */
@@ -31,27 +33,48 @@ INTEIRO  {DIGITO}+
 %%
 
 
-{INTEIRO} { printf("Inteiro! %d\n", atoi(yytext));}
+{INTEIRO} { 
+	printf("Inteiro! %d\n", atoi(yytext));
+	soma += atoi(yytext);
+
+}
+
+{INTEIRO}+\.{INTEIRO}+ {
+	printf("Ponto flutuante: [%s]\n", yytext);
+	soma += atof(yytext);
+}
+
 -{INTEIRO} { printf("Inteiro negativo %d\n", atoi(yytext)); }
 
 [a-zA-Z]+ { printf("Encontrei a palavra %s\n", yytext); } /* yytext e o texto que
                                                            deu match na
                                                            expressao regular */
-{INTEIRO}+\.{INTEIRO}+ {printf("Ponto flutuante: [%s]\n", yytext);}
 
+[[:space:]]+ {
+// Match with space, tab, new line
+//	printf("error with space: [%s]\n", yytext);
+}
+
+[[:^space:]]+ {
+	printf("error with no space: [%s]\n", yytext);
+}
+
+[\n]* ;
+
+%{
+/*
 [.]* {printf("whatever with []: [%s]\n", yytext);}
-.* {printf("whatever: [%s]\n", yytext);}
+.+ {printf("whatever: [%s]\n", yytext);}
 
-
-[[:space:]]+; /*{printf("error with space: [%s]\n", yytext);}*/
-[[:^space:]]+; /*{printf("error without space: [%s]\n", yytext);} */
-
-[.\n]* ;
-
+*/
+%}
 
 %%
 
 int main() {
   yylex();
+
+  printf("Soma: %f\n", soma);
+
   return 0;
 }
