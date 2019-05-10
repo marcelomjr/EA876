@@ -13,7 +13,8 @@ void sigquit() {
   printf("Recebi sinalizacao para terminar!\n");
   sleep(1);
   printf("Adeus!\n");
-  exit(0);
+    printf("Não quero!\n");
+  //exit(0);
 }
 
 int main() {

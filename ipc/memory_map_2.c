@@ -29,7 +29,7 @@ int main() {
       (*b)++;
       printf("Processo filho: a=%d, *b=%d\n", a, *b);
       sleep(1);
-      if  ( (*b) == 5) {
+      if  ( (*b) >= 5) {
         exit(0);
       }
     }

@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
   pthread_create(&thread, NULL, worker, NULL);
   sleep(2);
   pthread_mutex_unlock(&trava);
-  sleep(1);
+  sleep(100);
   printf("Thread principal tentando pegar trava...\n");
   pthread_mutex_lock(&trava);
   printf("Thread principal pegou trava\n");

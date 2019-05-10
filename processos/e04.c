@@ -19,7 +19,7 @@ int main() {
     i += 1;
     if (pid[j]==0) {
       i = 2;
-      fibo(60);
+      fibo(10);
       exit(0);
     }
   }

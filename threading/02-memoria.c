@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <pthread.h>
+#include <unistd.h>
 
 #define n_threads 10
 
@@ -25,6 +26,7 @@ int main(int argc, char **argv) {
     thread_args[i] = i;
     pthread_create(&(threads[i]), NULL, funcao_thread, &(thread_args[i]));
   }
+  sleep(1);
 
   printf("Terminando programa!\n");
   return 0;

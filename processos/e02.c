@@ -16,7 +16,7 @@ int main() {
     exit(0);
   }
   printf("Processo pai. PID do filho: %d\n", pid);
-  scanf("%d", &i);
+  scanf("%d\n", &i);
   printf("Saindo do processo pai\n");
   return 0;
 }
